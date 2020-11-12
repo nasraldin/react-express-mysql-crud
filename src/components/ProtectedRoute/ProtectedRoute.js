@@ -4,11 +4,8 @@ import {
 } from "../../constants/apiConstants";
 import React, { Component } from "react";
 
-import Cookies from "universal-cookie";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-
-const cookies = new Cookies();
 
 export default function ProtectedRoute(ComponentToProtect) {
   return class extends Component {
@@ -37,7 +34,7 @@ export default function ProtectedRoute(ComponentToProtect) {
           }
         })
         .catch((err) => {
-          cookies.remove("token");
+          localStorage.removeItem(ACCESS_TOKEN_NAME);
           this.setState({ loading: false, redirect: true });
         });
     }
