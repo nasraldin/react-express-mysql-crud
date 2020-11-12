@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
+require("./routes/user.routes")(app);
 require("./routes/app.routes")(app);
 
 const db = require("./models");
