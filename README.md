@@ -1,3 +1,11 @@
+# CRUD App with User roles & permission
+· React
+· Node.js
+· Express (use express-session and passport.js for authentication)
+· MySQL
+· Bootstrap
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
