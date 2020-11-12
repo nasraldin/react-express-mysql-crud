@@ -31,6 +31,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "sequelize": "^6.3.5",
+    "universal-cookie": "^4.0.4",
     "validator": "^13.1.17",
     "web-vitals": "^0.2.4"
   },
