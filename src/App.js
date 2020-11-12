@@ -1,24 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import React, { useState } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import LoginForm from "./components/LoginForm/LoginForm";
+import PrivateRoute from "./utils/PrivateRoute";
+import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 
 function App() {
+  const [title, updateTitle] = useState(null);
+  const [updateErrorMessage] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header title={title} />
+        <main className="flex-shrink-0">
+          <div className="container">
+            <Switch>
+              <Route path="/register">
+                <RegistrationForm
+                  showError={updateErrorMessage}
+                  updateTitle={updateTitle}
+                />
+              </Route>
+              <Route path="/login">
+                <LoginForm
+                  showError={updateErrorMessage}
+                  updateTitle={updateTitle}
+                />
+              </Route>
+              <PrivateRoute path="/home">
+                <Home />
+              </PrivateRoute>
+            </Switch>
+          </div>
+        </main>
+
+        <footer className="footer mt-auto py-3 bg-light">
+          <div className="container text-center">
+            <span className="text-muted">
+              <a href="https://nasraldin.com">Nasr Aldin</a> 2020
+            </span>
+          </div>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
